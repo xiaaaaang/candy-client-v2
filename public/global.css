@@ -1,0 +1,22 @@
+:root {
+	--theme-color: #ffffff;
+	--emphasize-color: #39a5db;
+	--foreground-color: #eeeeee;
+	--font-dark: #222222;
+	--font-dark-v1: #4e4e4e;
+	--font-light: #ffffff;
+	--radius: .3rem;
+	--border-color: #222222;
+	--spacing: .5rem;
+}
+
+* {
+	margin: 0rem;
+	padding: 0rem;
+	font-family: sans-serif;
+	user-select: none;
+}
+
+.page-root {
+	height: 100%;
+}

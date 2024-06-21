@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="32px" height="32px">
+    <g fill="#39a5db" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+        <g transform="scale(10.66667,10.66667)">
+            <path d="M5,20h14c1.657,0 3,-1.343 3,-3v-10c0,-1.657 -1.343,-3 -3,-3h-14c-1.657,0 -3,1.343 -3,3v10c0,1.657 1.343,3 3,3z" opacity="0.35"></path>
+            <path d="M8,11c-0.264,0 -0.519,-0.104 -0.707,-0.293l-2,-2c-0.391,-0.391 -0.391,-1.023 0,-1.414c0.391,-0.391 1.023,-0.391 1.414,0l1.138,1.137l1.323,-1.985c0.306,-0.46 0.925,-0.585 1.387,-0.277c0.46,0.306 0.584,0.927 0.277,1.387l-2,3c-0.166,0.25 -0.436,0.411 -0.733,0.44c-0.034,0.004 -0.067,0.005 -0.099,0.005z"></path>
+            <path d="M18,9h-4c-0.553,0 -1,-0.448 -1,-1c0,-0.552 0.447,-1 1,-1h4c0.553,0 1,0.448 1,1c0,0.552 -0.447,1 -1,1z"></path>
+            <path d="M18,13h-4c-0.553,0 -1,-0.448 -1,-1c0,-0.552 0.447,-1 1,-1h4c0.553,0 1,0.448 1,1c0,0.552 -0.447,1 -1,1z"></path>
+            <path d="M18,17h-4c-0.553,0 -1,-0.448 -1,-1c0,-0.552 0.447,-1 1,-1h4c0.553,0 1,0.448 1,1c0,0.552 -0.447,1 -1,1z"></path>
+        </g>
+    </g>
+</svg>
