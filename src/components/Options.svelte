@@ -11,6 +11,7 @@
             content: "",
             imageUrl: "",
             isSelected: false,
+            value: "",
             margin: "",
         },
     ];
@@ -18,23 +19,24 @@
         console.log(option);
     };
 
-    let selectedIndex = 0;
+    let selectedIndex = -1;
 
-    $: flexDerection =
-        direction == "row" ? "direction-row" : "direction-column";
+    $: flexDerection = direction == "row" ? "direction-row" : "direction-column";
 
     $: optionWidth = direction == "row" ? (100 / options.length) + "%" : ""; 
 
     function onSelected(index) {
         if (index == selectedIndex) return;
-        options[selectedIndex].isSelected = false;
+        if (selectedIndex != -1) {
+            options[selectedIndex].isSelected = false;
+        }
         selectedIndex = index;
         options[selectedIndex].isSelected = true;
         onOptionChanged(options[selectedIndex]);
     }
 
     onMount(() => {
-        options[0].isSelected = true;
+        onSelected(0)
     });
 
     onDestroy(() => {

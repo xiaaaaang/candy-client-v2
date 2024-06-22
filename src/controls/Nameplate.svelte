@@ -1,7 +1,7 @@
 <script>
-    export let name = "Han.Xiang";
-    export let description = "@xiaaaaang";
-    export let photoUrl = "https://i2.mjj.rip/2024/06/03/c0526f288d0120d250bed1816892d1d0.jpeg";
+    export let name;
+    export let description;
+    export let photoUrl;
 </script>
 
 <div class="ctrl-nameplate">

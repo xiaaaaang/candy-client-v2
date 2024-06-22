@@ -3,7 +3,7 @@
     export let options = [
         {
             id: 0,
-            iconUrl: "/images/tasks.svg",
+            iconUrl: "/images/task.svg",
             iconSelectedUrl: "/images/tasks.svg",
             text: "новый",
             routeUrl: "/",
@@ -11,7 +11,7 @@
         },
         {
             id: 1,
-            iconUrl: "/images/tasks.svg",
+            iconUrl: "/images/timeline.svg",
             iconSelectedUrl: "/images/tasks.svg",
             text: "задания",
             routeUrl: "/task-line",
@@ -19,10 +19,18 @@
         },
         {
             id: 2,
-            iconUrl: "/images/tasks.svg",
+            iconUrl: "/images/me.svg",
             iconSelectedUrl: "/images/tasks.svg",
             text: "профиль",
             routeUrl: "/profile",
+            isSelected: false,
+        },
+        {
+            id: 3,
+            iconUrl: "/images/go-back.svg",
+            iconSelectedUrl: "/images/tasks.svg",
+            text: "",
+            routeUrl: "/",
             isSelected: false,
         },
     ];

@@ -4,32 +4,53 @@
 	import Navigation from "./components/Navigation.svelte";
 	import Task from "./pages/Task.svelte";
 	import TaskLine from "./pages/TaskLine.svelte";
-	import Dashboard from "./pages/Dashboard.svelte";
+	import Profile from "./pages/Profile.svelte";
 	import { onMount } from "svelte";
 	import { Router, Route } from "svelte-routing";
 	import * as bizAccount from "./businesses/bizAccount";
+	import { storeAccount } from "./store";
+
+	let telegram = {};
 
 	onMount(async () => {
+		telegram = window.Telegram.WebApp;
 		await QueryAccountByUserId();
 	});
 
-	function QueryAccountByUserId() {
-		bizAccount.QueryAccountByUserId(5789645950).then(x => {
-			console.log(x);
-		}).catch(e => console.log(e));
+	async function QueryAccountByUserId() {
+		let user = telegram.initDataUnsafe.user;
+		if (/*user != undefined*/ true) {
+			let result = await bizAccount.QueryAccountByUserId(
+				/*user.id*/ 5789645950,
+			);
+			if (result.status) {
+				let profile = {
+					...result.value,
+					photoUrl:
+						result.value.photoUrl == null
+							? "https://i2.mjj.rip/2024/06/03/c0526f288d0120d250bed1816892d1d0.jpeg"
+							: result.value.photoUrl,
+				};
+				storeAccount.update((x) => profile);
+			}
+		}
 	}
 </script>
 
 <main id="app-root">
 	<div id="app-title">
-		<Nameplate></Nameplate>
+		<Nameplate
+			name="{$storeAccount.firstName}.{$storeAccount.lastName}"
+			description="@{$storeAccount.username}"
+			photoUrl={$storeAccount.photoUrl}
+		></Nameplate>
 		<Clock></Clock>
 	</div>
 	<div id="app-content">
 		<Router>
 			<Route path="/" component={Task}></Route>
 			<Route path="/task-line" component={TaskLine}></Route>
-			<Route path="/dashboard" component={Dashboard}></Route>
+			<Route path="/profile" component={Profile}></Route>
 		</Router>
 	</div>
 	<div id="app-navigation">

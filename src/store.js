@@ -10,7 +10,9 @@ export let client = axios.create({
 });
 
 export let storeAccount = writable({
+    id: '',
     userId: 5789645950,
+    accountId: '',
     firstName: '',
     lastName: '',
     username: '',

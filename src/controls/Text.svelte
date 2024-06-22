@@ -3,10 +3,10 @@
     export let rows;
     export let placeholder;
     export let readonly = false;
+    export let text;
 </script>
 
-<textarea {readonly} {placeholder} style:margin class="ctrl-text" {rows}
-></textarea>
+<textarea {readonly} {placeholder} style:margin class="ctrl-text" {rows} bind:value={text}></textarea>
 
 <style>
     .ctrl-text {

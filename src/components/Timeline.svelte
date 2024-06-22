@@ -1,44 +1,21 @@
 <script>
     import Point from "../controls/Point.svelte";
     import Card from "./Card.svelte";
-    let timeline = [
-        {
-            id: 0,
-            name: "Завершите разработку Candy.",
-            status: "#F05654",
-            description: "",
-            time: "2024.06.22",
-            tasks: [
-                {
-                    id: 0,
-                    name: "Завершите разработку Candy.",
-                    description: "20240622103246",
-                    content: "Candy - это приложение для напоминания о задачах.",
-                },
-                {
-                    id: 1,
-                    name: "Сегодняшний список покупок.",
-                    description: "20240622181202",
-                    content: "Яйца, молоко и хлеб.",
-                },
-            ],
-        },
-        {
-            id: 1,
-            name: "Проект-2",
-            status: "#FFC773",
-            description: "test project description.",
-            time: "2024.07.04",
-            tasks: [
-                {
-                    id: 0,
-                    name: "Возвращение в Китай.",
-                    description: "20240704153456",
-                    content: "Не забудьте купить прямой рейс из Екатеринбурга в Пекин.",
-                },
-            ],
+    import * as bizTask from "../businesses/bizTask";
+    export let timeline;
+    export let onTimelineItemsChanged;
+    async function onCompleted(id) {
+        let result = await bizTask.CompletedTaskById(id);
+        if (result.status) {
+            onTimelineItemsChanged();
         }
-    ];
+    }
+    async function onDelete(id) {
+        let result = await bizTask.DeletedTaskById(id);
+        if (result.status) {
+            onTimelineItemsChanged();
+        }
+    }
 </script>
 
 <div class="cmp-timeline">
@@ -50,16 +27,31 @@
                     <div class="timeline-point">
                         <Point backgroundColor={item.status}></Point>
                     </div>
-                    <span class="timeline-item-time" style:background-color={item.status}>{item.time}</span>
+                    <span
+                        class="timeline-item-time"
+                        style:background-color={item.status}>{item.time}</span
+                    >
                 </div>
                 <div class="timeline-item-tasks">
                     {#each item.tasks as task (task.id)}
                         <div class="timeline-item-task">
                             <Card
+                                {onDelete}
+                                {onCompleted}
+                                id={task.id}
                                 name={task.name}
                                 content={task.content}
                                 description={task.description}
                             ></Card>
+                        </div>
+                    {:else}
+                        <div class="timeline-dialog">
+                            <span class="timeline-dialog-title"
+                                >Сегодня делать нечего</span
+                            >
+                            <span class="timeline-dialog-content"
+                                >так что расслабьтесь</span
+                            >
                         </div>
                     {/each}
                 </div>
@@ -113,5 +105,22 @@
     }
     .timeline-item-task {
         margin-top: 0.5rem;
+    }
+    .timeline-dialog {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--foreground-color);
+        border-radius: var(--radius);
+        padding: var(--spacing);
+        margin-top: var(--spacing);
+    }
+    .timeline-dialog-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--font-dark);
+    }
+    .timeline-dialog-content {
+        font-size: 0.75rem;
+        color: var(--font-dark-v1);
     }
 </style>

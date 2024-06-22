@@ -1,12 +1,14 @@
 <script>
     export let margin = ".5rem 0rem";
-    export let placeholder = "YYYY / MM / DD"
+    export let placeholder = "YYYY / MM / DD";
+    export let date;
 </script>
 
 <input
     style:margin
     class="ctrl-date"
     type="text"
+    bind:value={date}
     placeholder={placeholder}
 />
 

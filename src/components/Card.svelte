@@ -1,8 +1,12 @@
 <script>
     import Button from "../controls/Button.svelte";
+    export let id;
     export let name;
     export let description;
     export let content;
+    export let onCompleted = () => {}
+    export let onDelete = () => {}
+    export let onUpdate = () => {}
 </script>
 
 <div class="cmp-card">
@@ -12,9 +16,9 @@
     </div>
     <span class="card-content">{content}</span>
     <div class="card-operations">
-        <Button backgroundColor="#39a5db" iconUrl="/images/completed.svg" />
-        <Button backgroundColor="#39a5db" iconUrl="/images/settings.svg" />
-        <Button backgroundColor="#F05654" iconUrl="/images/delete.svg" />
+        <Button backgroundColor="#39a5db" iconUrl="/images/completed.svg" action={() => onCompleted(id)}/>
+        <Button backgroundColor="#39a5db" iconUrl="/images/settings.svg" action={() => onUpdate(id)}/>
+        <Button backgroundColor="#F05654" iconUrl="/images/delete.svg" action={() => onDelete(id)}/>
     </div>
 </div>
 
